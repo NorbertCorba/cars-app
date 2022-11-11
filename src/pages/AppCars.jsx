@@ -3,16 +3,7 @@ import React, { useState, useEffect } from "react";
 import CarsService from "../services/CarsService";
 
 export default function AppCars() {
-    const [cars, setCars] = useState({
-        brand: "",
-        model: "",
-        year: 0,
-        maxSpeed: 0,
-        isAutomatic: true,
-        engine: "",
-        numberOfDoors: 0,
-        id: 0
-    });
+    const [cars, setCars] = useState([]);
 
     const handleGetCars = async () => {
         const cars = await CarsService.getAll();
@@ -22,23 +13,22 @@ export default function AppCars() {
     useEffect(() => {
         handleGetCars();
     }, []);
-
+    console.log(cars[0]);
     return (
         <div>
-            <ul>
-                {cars && cars.map((car) =>( 
-                <>
-                <li key={car.id}>{car.brand}</li>
-                <li key={car.id}>{car.model}</li>
-                <li key={car.id}>{car.year}</li>
-                <li key={car.id}>{car.maxSpeed}</li>
-                <li key={car.id}>{car.isAutomatic}</li>
-                <li key={car.id}>{car.engine}</li>
-                <li key={car.id}>{car.numberOfDoors}</li>
-                <li key={car.id}>{car.id}</li>
-                </> 
+            {cars && cars.map((car) => (
+            <div key={car.id}>
+                <p><strong>Brand: </strong>{car.brand}</p>
+                <p><strong>Model: </strong> {car.model}</p>
+                <p><strong>Year: </strong> {car.year}</p>
+                <p><strong>Maximum speed: </strong> {car.maxSpeed}</p>
+                <p><strong>Is it automatic: </strong>{car.isAutomatic ? 'Yes' : 'No'}</p>
+                <p><strong>Engine type: </strong>{car.engine}</p>
+                <p><strong>Number of doors: </strong>{car.numberOfDoors}</p>
+                <hr color="red"></hr>
+                <hr color="red"></hr>
+            </div>
                 ))}
-            </ul>
         </div>
     );
 }
