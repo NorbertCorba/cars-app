@@ -33,6 +33,10 @@ export default function AddCar() {
         setNewCar(newCar = defaultCars)
     }
 
+    const handlerPreviewForm = () => {
+        alert(JSON.stringify(newCar));
+    }
+
     return (
         <div>
             <CreateCarForm
@@ -40,6 +44,7 @@ export default function AddCar() {
                 setNewCar={setNewCar}
                 onCreateNewCar={handlerCreateNewCar}
                 onResetForm={handlerResetForm}
+                onPreviewForm={handlerPreviewForm}
             />
         </div>
     )

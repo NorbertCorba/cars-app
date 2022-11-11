@@ -12,13 +12,15 @@ export default function CreateCarForm({
     newCar,
     setNewCar,
     onCreateNewCar,
-    onResetForm
+    onResetForm,
+    onPreviewForm
 }) {
     return (
-        <form class="form" onSubmit={onCreateNewCar}>
+        <form className="form" onSubmit={onCreateNewCar}>
             <label>Brand:</label>
             <input
                 required
+                minLength={2}
                 type="text"
                 value={newCar.brand}
                 onChange={({ target }) =>
@@ -27,7 +29,8 @@ export default function CreateCarForm({
             /><br />
             <label>Model:</label>
             <input
-                required
+                required 
+                minLength={2}
                 type="text"
                 value={newCar.model}
                 onChange={({ target }) =>
@@ -49,7 +52,6 @@ export default function CreateCarForm({
             <br />
             <label>Max Speed:</label>
             <input
-                required
                 type="number"
                 min="0"
                 value={newCar.maxSpeed}
@@ -110,8 +112,11 @@ export default function CreateCarForm({
                     setNewCar({ ...newCar, numberOfDoors: target.value })
                 }
             /><br />
-            <button class="button" type="submit"><strong>ADD NEW CAR</strong></button>
-            <button class="button" onClick={onResetForm}> <strong>RESET THE FORM</strong></button>
+            <button className="button" type="submit"><strong>ADD NEW CAR</strong></button>
+            <button className="button" onClick={onResetForm}> <strong>RESET THE FORM</strong></button>
+            <br />
+            <button className="button" onClick={onPreviewForm}> <strong>PREVIEW</strong></button>
+
         </form>
 
     )

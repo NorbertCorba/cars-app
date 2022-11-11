@@ -8,11 +8,11 @@ function App() {
     <div>
       <nav>
         <ul>
-          <li class = "li">
-            <Link class = "link" to="/cars">Cars list</Link>
+          <li className= "li">
+            <Link className="link" to="/cars">Cars list</Link>
           </li>
-          <li class = "li">
-            <Link class = "link" to="/add">Click here to add new car</Link>
+          <li className="li">
+            <Link className="link" to="/add">Click here to add new car</Link>
           </li>
         </ul>
       </nav>
