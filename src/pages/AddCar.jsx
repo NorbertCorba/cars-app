@@ -29,12 +29,17 @@ export default function AddCar() {
         }
     };
 
+    const handlerResetForm = (newCar) => {
+        setNewCar(newCar = defaultCars)
+    }
+
     return (
         <div>
             <CreateCarForm
                 newCar={newCar}
                 setNewCar={setNewCar}
                 onCreateNewCar={handlerCreateNewCar}
+                onResetForm={handlerResetForm}
             />
         </div>
     )

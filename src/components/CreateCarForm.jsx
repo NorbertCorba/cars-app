@@ -12,9 +12,10 @@ export default function CreateCarForm({
     newCar,
     setNewCar,
     onCreateNewCar,
+    onResetForm
 }) {
     return (
-        <form onSubmit={onCreateNewCar}>
+        <form class="form" onSubmit={onCreateNewCar}>
             <label>Brand:</label>
             <input
                 required
@@ -109,7 +110,9 @@ export default function CreateCarForm({
                     setNewCar({ ...newCar, numberOfDoors: target.value })
                 }
             /><br />
-            <button type="submit">Add new car</button>
+            <button class="button" type="submit"><strong>ADD NEW CAR</strong></button>
+            <button class="button" onClick={onResetForm}> <strong>RESET THE FORM</strong></button>
         </form>
+
     )
 }
