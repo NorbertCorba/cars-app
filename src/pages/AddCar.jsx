@@ -1,33 +1,42 @@
 import React, { useState } from "react";
 import CreateCarForm from "../components/CreateCarForm";
 import CarsService from "../services/CarsService";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 
 const defaultCars = {
     brand: "",
     model: "",
     year: "",
-    maxSpeed: "",
-    isAutomatic: "",
+    max_speed: "",
+    is_automatic: false,
     engine: "",
-    numberOfDoors: "",
+    number_of_doors: "",
 };
 
 export default function AddCar() {
 
     const history = useHistory();
     const [newCar, setNewCar] = useState(defaultCars);
+    const { id } = useParams();
+
 
     const handlerCreateNewCar = async (e) => {
         e.preventDefault();
-        const newCarResponse = await CarsService.add(newCar);
-
-
-        if (newCarResponse.status === 200) {
-            history.push("/cars");
+        const response = await CarsService.add(newCar);
+        if (response.status === 200) {
+          setNewCar(response.data);
+          history.push("/cars");
         }
+
     };
+
+    // const handleEditCar = async () => {
+    //     const response = await CarsService.edit(id, newCar);
+    //     if (response.status === 200) {
+    //       history.push("/cars");
+    //     }
+    //   };
 
     const handlerResetForm = (newCar) => {
         setNewCar(newCar = defaultCars)
@@ -45,6 +54,7 @@ export default function AddCar() {
                 onCreateNewCar={handlerCreateNewCar}
                 onResetForm={handlerResetForm}
                 onPreviewForm={handlerPreviewForm}
+                // onEditCar={handleEditCar}
             />
         </div>
     )

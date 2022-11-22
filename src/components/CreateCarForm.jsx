@@ -9,11 +9,13 @@ const yearsFunc = (start = 1990, end = 2018) => {
 const years = yearsFunc();
 
 export default function CreateCarForm({
+    id,
     newCar,
     setNewCar,
     onCreateNewCar,
     onResetForm,
-    onPreviewForm
+    onPreviewForm,
+    onEditCar
 }) {
     return (
         <form className="form" onSubmit={onCreateNewCar}>
@@ -29,7 +31,7 @@ export default function CreateCarForm({
             /><br />
             <label>Model:</label>
             <input
-                required 
+                required
                 minLength={2}
                 type="text"
                 value={newCar.model}
@@ -112,7 +114,7 @@ export default function CreateCarForm({
                     setNewCar({ ...newCar, numberOfDoors: target.value })
                 }
             /><br />
-            <button className="button" type="submit"><strong>ADD NEW CAR</strong></button>
+                <button className="button" type="submit">{!id ? 'Add' : 'Edit'}</button> :
             <button className="button" onClick={onResetForm}> <strong>RESET THE FORM</strong></button>
             <br />
             <button className="button" onClick={onPreviewForm}> <strong>PREVIEW</strong></button>
