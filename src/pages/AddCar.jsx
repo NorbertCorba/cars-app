@@ -18,7 +18,6 @@ export default function AddCar() {
 
     const history = useHistory();
     const [newCar, setNewCar] = useState(defaultCars);
-    const { id } = useParams();
 
 
     const handlerCreateNewCar = async (e) => {
@@ -38,8 +37,8 @@ export default function AddCar() {
     //     }
     //   };
 
-    const handlerResetForm = (newCar) => {
-        setNewCar(newCar = defaultCars)
+    const handlerResetForm = () => {
+        setNewCar(defaultCars)
     }
 
     const handlerPreviewForm = () => {

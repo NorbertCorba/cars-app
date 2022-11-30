@@ -15,7 +15,7 @@ export default function CreateCarForm({
     onCreateNewCar,
     onResetForm,
     onPreviewForm,
-    onEditCar
+    // onEditCar
 }) {
     return (
         <form className="form" onSubmit={onCreateNewCar}>
@@ -56,9 +56,9 @@ export default function CreateCarForm({
             <input
                 type="number"
                 min="0"
-                value={newCar.maxSpeed}
+                value={newCar.max_speed}
                 onChange={({ target }) =>
-                    setNewCar({ ...newCar, maxSpeed: target.value })
+                    setNewCar({ ...newCar, max_speed: target.value })
                 }
             /><br />
             <label>Is Automatic:</label>
@@ -66,8 +66,8 @@ export default function CreateCarForm({
                 type="checkbox"
                 onChange={({ target }) => (target.checked
                     ?
-                    setNewCar({ ...newCar, isAutomatic: "Yes" }) :
-                    setNewCar({ ...newCar, isAutomatic: "No" }))
+                    setNewCar({ ...newCar, is_automatic: "Yes" }) :
+                    setNewCar({ ...newCar, is_automatic: "No" }))
                 }
 
             /><br />
@@ -109,12 +109,12 @@ export default function CreateCarForm({
             <input
                 required
                 type="number"
-                value={newCar.numberOfDoors}
+                value={newCar.number_of_doors}
                 onChange={({ target }) =>
-                    setNewCar({ ...newCar, numberOfDoors: target.value })
+                    setNewCar({ ...newCar, number_of_doors: target.value })
                 }
             /><br />
-                <button className="button" type="submit">{!id ? 'Add' : 'Edit'}</button> :
+            <button className="button" type="submit"><strong>ADD NEW CAR</strong></button>
             <button className="button" onClick={onResetForm}> <strong>RESET THE FORM</strong></button>
             <br />
             <button className="button" onClick={onPreviewForm}> <strong>PREVIEW</strong></button>

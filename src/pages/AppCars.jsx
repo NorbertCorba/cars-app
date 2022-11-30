@@ -32,21 +32,26 @@ export default function AppCars() {
     };
     return (
         <div>
+            <h2>Our current cars list:</h2>
             {cars && cars.map((car) => (
                 <div key={car.id}>
-                    <p><strong>Brand: </strong>{car.brand}</p>
-                    <p><strong>Model: </strong> {car.model}</p>
-                    <p><strong>Year: </strong> {car.year}</p>
-                    <p><strong>Maximum speed: </strong> {car.maxSpeed}</p>
-                    <p><strong>Is it automatic: </strong>{car.isAutomatic ? 'Yes' : 'No'}</p>
-                    <p><strong>Engine type: </strong>{car.engine}</p>
-                    <p><strong>Number of doors: </strong>{car.numberOfDoors}</p>
-                    {/* <Link to={`/edit/${car.id}`}>Edit</Link> */}
-                    <br />
-                    <button type="submit" onClick={() => handleDelete(car.id)}>Delete</button>
+                    
 
-                    <hr color="red"></hr>
-                    <hr color="red"></hr>
+                        <p><strong>Brand: </strong><Link to={`/cars/${car.id}`}>{car.brand}</Link>  -click on the car name to see this car in new tab</p>
+                    
+                        <p><strong>Model: </strong> {car.model}</p>
+                        <p><strong>Year: </strong> {car.year}</p>
+                        <p><strong>Maximum speed: </strong> {car.maxSpeed}</p>
+                        <p><strong>Is it automatic: </strong>{car.isAutomatic ? 'Yes' : 'No'}</p>
+                        <p><strong>Engine type: </strong>{car.engine}</p>
+                        <p><strong>Number of doors: </strong>{car.numberOfDoors}</p>
+                      
+                        {/* <Link to={`/edit/${car.id}`}>Edit</Link> */}
+                        <br />
+                        <button type="submit" onClick={() => handleDelete(car.id)}>Delete</button>
+
+                        <hr color="red"></hr>
+                        <hr color="red"></hr>
                 </div>
             ))}
         </div>
